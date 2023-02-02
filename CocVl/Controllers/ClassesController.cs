@@ -39,16 +39,20 @@ namespace CocVl.Controllers
             return Ok(classes);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<string> DeleteClassById(int Id)
+        [HttpDelete("{id:int}", Name = "DeleteClassById")]
+        public async Task<Class> DeleteClassById(int Id)
         {
-            return await _mediator.Send(new DeleteClassByIdCommand(Id));
+            var classes = await _mediator.Send(new DeleteClassByIdCommand(Id));
+
+            return classes;
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateClassById(int Id, string classname)
+        public async Task<ActionResult> UpdateClassById(int Id, Class Class)
         {
-            return Ok(await _mediator.Send(new UpdateClassByIdCommand(Id, classname)));
+            var classes = await _mediator.Send(new UpdateClassByIdCommand(Id, Class));
+        
+            return Ok(classes);
         }
 
     }

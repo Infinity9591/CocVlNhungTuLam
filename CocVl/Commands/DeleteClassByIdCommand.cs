@@ -3,5 +3,5 @@ using MediatR;
 
 namespace CocVl.Commands
 {
-    public record DeleteClassByIdCommand(int Id) : IRequest<string>;
+    public record DeleteClassByIdCommand(int Id) : IRequest<Class>;
 }
