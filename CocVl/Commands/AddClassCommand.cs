@@ -3,5 +3,5 @@ using MediatR;
 
 namespace CocVl.Commands
 {
-    public record AddClassCommand(Class Class) : IRequest<Class>;
+    public record AddClassCommand(Class _Class) : IRequest<Class>;
 }

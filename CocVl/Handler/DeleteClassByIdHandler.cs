@@ -8,20 +8,20 @@ namespace CocVl.Handler
 {
     public class DeleteClassByIdHandler : IRequestHandler<DeleteClassByIdCommand, Class>
     {
-        private readonly CocVlEntities _dataClass;
+        private readonly CocVlEntities _db;
 
-        public DeleteClassByIdHandler(CocVlEntities dataClass) 
+        public DeleteClassByIdHandler(CocVlEntities db) 
         {
-            _dataClass = dataClass;
+            _db = db;
         }
 
         public async Task<Class> Handle(DeleteClassByIdCommand request, CancellationToken cancellationToken)
         {
-            var entity = _dataClass.Class.Where(x => x.ID == request.Id).FirstOrDefault();
+            var entity = _db.Class.Where(x => x.ID == request.Id).FirstOrDefault();
             if (entity!=null)
             {
-                _dataClass.Class.RemoveRange(entity);
-                await _dataClass.SaveChangesAsync();
+                _db.Class.RemoveRange(entity);
+                await _db.SaveChangesAsync();
                 return entity;
             }
             else

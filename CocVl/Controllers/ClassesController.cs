@@ -47,7 +47,7 @@ namespace CocVl.Controllers
             return classes;
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<ActionResult> UpdateClassById(int Id, Class Class)
         {
             var classes = await _mediator.Send(new UpdateClassByIdCommand(Id, Class));

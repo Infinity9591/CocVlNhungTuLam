@@ -6,13 +6,13 @@ namespace CocVl.Handler
 {
     public class GetClassHandler :IRequestHandler<GetClassQuery, List<Class>>
     {
-        private readonly CocVlEntities _dataClass;
+        private readonly CocVlEntities _db;
 
-        public GetClassHandler(CocVlEntities dataClass) => _dataClass = dataClass;
+        public GetClassHandler(CocVlEntities db) => _db = db;
 
         public Task<List<Class>> Handle(GetClassQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_dataClass.Class.ToList());
+            return Task.FromResult(_db.Class.ToList());
         }
             
     }

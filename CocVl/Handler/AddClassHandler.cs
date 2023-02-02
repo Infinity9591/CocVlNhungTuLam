@@ -6,17 +6,17 @@ namespace CocVl.Handler
 {
     public class AddClassHandler : IRequestHandler<AddClassCommand, Class>
     {
-        private readonly CocVlEntities _dataClass;
+        private readonly CocVlEntities _db;
 
-        public AddClassHandler(CocVlEntities dataClass)
+        public AddClassHandler(CocVlEntities db)
         {
-            _dataClass = dataClass; 
+            _db = db;
         }
 
         public async Task<Class> Handle(AddClassCommand request, CancellationToken cancellationToken)
         {
-            await _dataClass.Class.AddAsync(request.Class);
-            await _dataClass.SaveChangesAsync();
+            await _db.Class.AddAsync(request.Class);
+            await _db.SaveChangesAsync();
             return request.Class;
         }
     }

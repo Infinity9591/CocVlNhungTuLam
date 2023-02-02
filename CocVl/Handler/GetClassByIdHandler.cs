@@ -7,16 +7,16 @@ namespace CocVl.Handler
 {
     public class GetClassByIdHandler : IRequestHandler<GetClassByIdQuery, Class>
     {
-        private readonly CocVlEntities _dataClass;
+        private readonly CocVlEntities _db;
 
-        public GetClassByIdHandler(CocVlEntities dataClass) 
+        public GetClassByIdHandler(CocVlEntities db) 
         {
-            _dataClass = dataClass;
+            _db = db;
         }
 
         public Task<Class> Handle(GetClassByIdQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_dataClass.Class.Single(x => x.ID == request.ID));
+            return Task.FromResult(_db.Class.Single(x => x.ID == request.ID));
         }
     }
 }
