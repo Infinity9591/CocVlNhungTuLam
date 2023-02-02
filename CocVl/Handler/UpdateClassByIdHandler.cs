@@ -15,10 +15,10 @@ namespace CocVl.Handler
 
         public async Task<Class?> Handle(UpdateClassByIdCommand request, CancellationToken cancellationToken)
         {
-            var entity = _db.Class.Where(x => x.ID == request.Class.ID).FirstOrDefault();
+            var entity = _db.Class.Where(x => x.ID == request._Class.ID).FirstOrDefault();
             if (entity != null)
             {
-                entity.ClassName = request.Class.ClassName;
+                entity.ClassName = request._Class.ClassName;
                 await _db.SaveChangesAsync();
                 return entity;
             }

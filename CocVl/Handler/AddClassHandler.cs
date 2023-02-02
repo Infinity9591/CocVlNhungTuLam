@@ -15,9 +15,9 @@ namespace CocVl.Handler
 
         public async Task<Class> Handle(AddClassCommand request, CancellationToken cancellationToken)
         {
-            await _db.Class.AddAsync(request.Class);
+            await _db.Class.AddAsync(request._Class);
             await _db.SaveChangesAsync();
-            return request.Class;
+            return request._Class;
         }
     }
 }
