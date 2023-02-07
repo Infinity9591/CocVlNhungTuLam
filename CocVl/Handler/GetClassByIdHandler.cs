@@ -16,7 +16,7 @@ namespace CocVl.Handler
 
         public Task<Class> Handle(GetClassByIdQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_db.Class.Single(x => x.ID == request.ID));
+            return Task.FromResult(_db.Class.Single(x => x.ID == request.classId));
         }
     }
 }

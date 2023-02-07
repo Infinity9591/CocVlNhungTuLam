@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Data;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CocVl.Models
 {
@@ -12,7 +14,8 @@ namespace CocVl.Models
             );
         }
         public virtual DbSet<Class> Class { get; set; }
-        //public virtual DbSet<Students> Students { get; set; }
-
+        public virtual DbSet<Students> Students { get; set; }
+        //public virtual DbSet<StudentManageView> StudentManageView { get; set;}
+        
     }
 }

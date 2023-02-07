@@ -17,24 +17,24 @@ namespace CocVl.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddClass([FromBody] Class Class)
+        public async Task<ActionResult> AddClass([FromBody] Class _Class)
         {
-            var classToReturn = await _mediator.Send(new AddClassCommand(Class));
+            var classes = await _mediator.Send(new AddClassCommand(_Class));
 
-            return CreatedAtRoute("GetClassById", new { id = classToReturn.ID }, classToReturn);
+            return Ok(classes);
         }
 
         [HttpGet]
         public async Task<ActionResult> GetClasses()
         {
-            var classes = await _mediator.Send(new GetClassQuery());
+            var classes = await _mediator.Send(new GetClassesQuery());
             return Ok(classes);
         }
 
         [HttpGet("{id:int}", Name = "GetClassById")]
-        public async Task<ActionResult> GetClassById(int Id)
+        public async Task<ActionResult> GetClassById(int classId)
         {
-            var classes = await _mediator.Send(new GetClassByIdQuery(Id));
+            var classes = await _mediator.Send(new GetClassByIdQuery(classId));
 
             return Ok(classes);
         }
@@ -48,10 +48,10 @@ namespace CocVl.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> UpdateClassById(int Id, Class Class)
+        public async Task<ActionResult> UpdateClassById(int Id, Class _Class)
         {
-            var classes = await _mediator.Send(new UpdateClassByIdCommand(Id, Class));
-        
+            var classes = await _mediator.Send(new UpdateClassByIdCommand(Id, _Class));
+
             return Ok(classes);
         }
 
